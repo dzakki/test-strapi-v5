@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "au_states",
+  "info": {
+    "singularName": "au-state",
+    "pluralName": "au-states",
+    "displayName": "AU-states"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "string"
+    },
+    "au_locations": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::au-location.au-location",
+      "mappedBy": "au_state"
+    },
+    "au_region": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::au-region.au-region",
+      "inversedBy": "au_states"
+    }
+  }
+}

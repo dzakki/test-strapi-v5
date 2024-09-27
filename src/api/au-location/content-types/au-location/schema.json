@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "au_locations",
+  "info": {
+    "singularName": "au-location",
+    "pluralName": "au-locations",
+    "displayName": "AU-locations"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "string"
+    },
+    "au_state": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::au-state.au-state",
+      "inversedBy": "au_locations"
+    },
+    "au_region": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::au-region.au-region",
+      "inversedBy": "au_locations"
+    }
+  }
+}

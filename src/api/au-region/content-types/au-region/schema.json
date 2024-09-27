@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "au_regions",
+  "info": {
+    "singularName": "au-region",
+    "pluralName": "au-regions",
+    "displayName": "AU-regions"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "au_locations": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::au-location.au-location",
+      "mappedBy": "au_region"
+    },
+    "au_states": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::au-state.au-state",
+      "mappedBy": "au_region"
+    }
+  }
+}

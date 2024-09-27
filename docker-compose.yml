@@ -1,0 +1,33 @@
+version: "3"
+services:
+  database:
+    container_name: rams_stack_db
+    platform: linux/x86_64
+    image: mysql:5.7
+    volumes:
+      - ./data/database:/var/lib/mysql
+    networks:
+      - rams_stack
+    environment:
+      MYSQL_USER: strapi
+      MYSQL_PASSWORD: strapi
+      MYSQL_ROOT_PASSWORD: strapi
+      MYSQL_DATABASE: strapi
+    ports:
+      - 9057:3306
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: rams_stack_pma
+    depends_on:
+      - database
+    networks:
+      - rams_stack
+    environment:
+      PMA_HOST: database
+      PMA_PORT: 3306
+      MYSQL_ROOT_PASSWORD: strapi
+    restart: always
+    ports:
+      - 9056:80
+networks:
+  rams_stack:
